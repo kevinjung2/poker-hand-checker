@@ -1,5 +1,8 @@
 class Hand < ApplicationRecord
   # TODO: Create self.values -> should be sorted, self.suits, and self.values_counted
+  has_many :card_hands
+  has_many :cards, through: :card_hands
+
   validates_uniqueness :true
   validates_size 5
 
