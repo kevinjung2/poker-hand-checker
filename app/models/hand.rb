@@ -3,8 +3,8 @@ class Hand < ApplicationRecord
   has_many :card_hands
   has_many :cards, through: :card_hands
 
-  validates_uniqueness :true
-  validates_size 5
+  # validates_uniqueness :true
+  # validates_size 5
 
   def is_royal?
     if self.isFLush? && self.values == [10, 11, 12, 13, 14]
