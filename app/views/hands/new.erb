@@ -1,1 +1,6 @@
-<h1>New</h1>
+<%= form_with model: @hand do |f| %>
+  <%= f.label :cards, "Select 5 cards to make a hand:" %>
+  <%= f.collection_check_boxes :card_ids, @cards, :id, :name %>
+  <br>
+  <%= f.submit "Analyze" %>
+<% end %>

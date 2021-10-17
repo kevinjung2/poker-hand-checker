@@ -6,6 +6,7 @@ class Hand < ApplicationRecord
   # validates_uniqueness :true
   # validates_size 5
 
+  
   def is_royal?
     if self.isFLush? && self.values == [10, 11, 12, 13, 14]
       return true
@@ -64,7 +65,7 @@ class Hand < ApplicationRecord
 
   def high_card
     high_card = self.values.last
-    translated_values = {11: "J", 12: "Q", 13: "K", 14: "A"}
+    translated_values = {11 => "J", 12 => "Q", 13 => "K", 14 => "A"}
 
     return high_card if high_card <= 10
     return translated_values[high_card]
