@@ -7,7 +7,19 @@ class Hand < ApplicationRecord
   # validates_size 5
 
   def values
-    self.cards.map{|card| card.value}
+    self.cards.map{|card| card.value}.sort
+  end
+
+  def suits
+    self.cards.map{|card| card.suit}
+  end
+
+  def values_counted
+    values = {}
+    self.values.each do |value|
+      values[value] ? values[value] += 1 : values[value] = 1
+    end
+    values
   end
 
   def is_royal?
