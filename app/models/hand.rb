@@ -6,7 +6,10 @@ class Hand < ApplicationRecord
   # validates_uniqueness :true
   # validates_size 5
 
-  
+  def values
+    self.cards.map{|card| card.value}
+  end
+
   def is_royal?
     if self.isFLush? && self.values == [10, 11, 12, 13, 14]
       return true
