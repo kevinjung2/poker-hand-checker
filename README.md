@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Takes input of card names to build a poker hand and returns that hands rank.
 
-Things you may want to cover:
+To run on your local machine:
 
-* Ruby version
+```git clone git@github.com:kevinjung2/poker-hand-checker.git```
 
-* System dependencies
+```bundle install```
 
-* Configuration
+```rails s```
 
-* Database creation
+then navigate to localhost:3000 in your browser
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+card names are reffered to by their number (or first letter on their name if a facecard/ace) and the first letter of their suit.
