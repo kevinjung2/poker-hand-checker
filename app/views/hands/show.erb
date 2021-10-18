@@ -1,0 +1,11 @@
+<h2>Your hand:</h2>
+<span>
+  <%@hand.cards.each do |card|%>
+    <%= card.name %>
+  <%end%>
+</span>
+<br>
+<h2>Your hand's rank:</h2>
+<span>
+  <%=@score%>
+</span>

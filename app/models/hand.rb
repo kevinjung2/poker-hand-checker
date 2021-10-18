@@ -70,6 +70,10 @@ class Hand < ApplicationRecord
     end
   end
 
+  def is_two_pair
+    
+  end
+
   def includes_pair?
     if self.values_counted.values.includes?(2)
       return true
