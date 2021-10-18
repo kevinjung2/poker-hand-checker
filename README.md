@@ -12,6 +12,11 @@ next install dependencies
 
 ```bundle install```
 
+setup the database
+
+```rails db:migrate```
+```rails db:seed```
+
 run the server
 
 ```rails s```
