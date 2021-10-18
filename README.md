@@ -23,4 +23,12 @@ run the server
 
 then navigate to localhost:3000 in your browser
 
+### TROUBLESHOOTING NOTICE
+
+if you get a webpack error after all these steps are complete run the command:
+
+```bundle exec rake webpacker:install```
+
+then restart the server and refresh your localhost window.
+
 card names are reffered to by their number (or first letter on their name if a facecard/ace) and the first letter of their suit.
