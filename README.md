@@ -31,4 +31,12 @@ if you get a webpack error after all these steps are complete run the command:
 
 then restart the server and refresh your localhost window.
 
+### RUNNING THE TESTS
+
+if youre interested in running the tests for the hand analyzer then just run the command
+
+```rspec```
+
+these test are located in the spec directory
+
 card names are reffered to by their number (or first letter on their name if a facecard/ace) and the first letter of their suit.
