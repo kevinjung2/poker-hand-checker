@@ -23,7 +23,7 @@ class Hand < ApplicationRecord
   end
 
   def is_royal?
-    if self.isFLush? && self.values == [10, 11, 12, 13, 14]
+    if self.is_flush? && self.values == [10, 11, 12, 13, 14]
       return true
     else
       return false
@@ -47,7 +47,7 @@ class Hand < ApplicationRecord
   end
 
   def is_quads?
-    if self.values_counted.values.includes?(4)
+    if self.values_counted.values.include?(4)
       return true
     else
       return false
@@ -55,7 +55,7 @@ class Hand < ApplicationRecord
   end
 
   def is_full_house?
-    if self.includes_trips && self.includes_pair
+    if self.includes_trips? && self.includes_pair?
       return true
     else
       return false
@@ -63,7 +63,7 @@ class Hand < ApplicationRecord
   end
 
   def includes_trips?
-    if self.values_counted.values.inludes?(3)
+    if self.values_counted.values.include?(3)
       return true
     else
       return false
@@ -71,7 +71,7 @@ class Hand < ApplicationRecord
   end
 
   def includes_pair?
-    if self.values_counted.values.includes?(2)
+    if self.values_counted.values.include?(2)
       return true
     else
       return false
@@ -96,26 +96,15 @@ class Hand < ApplicationRecord
   end
 
   def analyze_hand
-    case self
-    when self.is_royal?
-      return "Royal Flush"
-    when self.is_straight? && self.is_flush?
-      return "Straight Flush"
-    when self.is_quads?
-      return "Four of a Kind"
-    when self.is_full_house?
-      return "Full House"
-    when self.is_flush?
-      return "Flush"
-    when self.is_straight?
-      return "Straight"
-    when self.includes_trips?
-      return "Trips"
-    when self.includes_pair?
-      return "Pair"
-    else
-      return '${self.high_card} High'
-    end
-
+    return "Royal Flush" if self.is_royal?
+    return "Straight Flush" if self.is_straight? && self.is_flush?
+    return "Four of a Kind" if self.is_quads?
+    return "Full House" if self.is_full_house?
+    return "Flush" if self.is_flush?
+    return "Straight" if self.is_straight?
+    return "Three of a Kind" if self.includes_trips?
+    return "Two Pair" if self.is_two_pair?
+    return "Pair" if self.includes_pair?
+    return "#{self.high_card} High"
   end
 end
