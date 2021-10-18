@@ -70,10 +70,6 @@ class Hand < ApplicationRecord
     end
   end
 
-  def is_two_pair
-    
-  end
-
   def includes_pair?
     if self.values_counted.values.includes?(2)
       return true
@@ -81,6 +77,15 @@ class Hand < ApplicationRecord
       return false
     end
   end
+
+  def is_two_pair?
+    if self.values_counted.filter{|count| count == 2}.length == 2
+      return true
+    else
+      return false
+    end
+  end
+
 
   def high_card
     high_card = self.values.last
