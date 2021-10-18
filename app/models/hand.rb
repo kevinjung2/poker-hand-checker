@@ -1,10 +1,7 @@
 class Hand < ApplicationRecord
-  # TODO: Create self.values -> should be sorted, self.suits, and self.values_counted
   has_many :card_hands
   has_many :cards, through: :card_hands
 
-  # validates_uniqueness :true
-  # validates_size 5
 
   def values
     self.cards.map{|card| card.value}.sort
@@ -20,6 +17,10 @@ class Hand < ApplicationRecord
       values[value] ? values[value] += 1 : values[value] = 1
     end
     values
+  end
+
+  def card_names
+    self.cards.map{|card| card.name}
   end
 
   def is_royal?
@@ -79,7 +80,7 @@ class Hand < ApplicationRecord
   end
 
   def is_two_pair?
-    if self.values_counted.filter{|count| count == 2}.length == 2
+    if self.values_counted.values.filter{|count| count == 2}.length == 2
       return true
     else
       return false
@@ -96,6 +97,7 @@ class Hand < ApplicationRecord
   end
 
   def analyze_hand
+    return "Invalid Hand" if self.cards.length != 5 || self.card_names.uniq.length != self.card_names.length
     return "Royal Flush" if self.is_royal?
     return "Straight Flush" if self.is_straight? && self.is_flush?
     return "Four of a Kind" if self.is_quads?
@@ -104,7 +106,7 @@ class Hand < ApplicationRecord
     return "Straight" if self.is_straight?
     return "Three of a Kind" if self.includes_trips?
     return "Two Pair" if self.is_two_pair?
-    return "Pair" if self.includes_pair?
+    return "One Pair" if self.includes_pair?
     return "#{self.high_card} High"
   end
 end
