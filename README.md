@@ -1,8 +1,8 @@
 # README
 
-##Takes input of card names to build a poker hand and returns that hands rank.
+## Takes input of card names to build a poker hand and returns that hands rank.
 
-###To run on your local machine:
+### To run on your local machine:
 
 in the terminal first clone the repo
 
