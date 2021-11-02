@@ -24,11 +24,7 @@ class Hand < ApplicationRecord
   end
 
   def is_royal?
-    if self.is_flush? && self.values == [10, 11, 12, 13, 14]
-      return true
-    else
-      return false
-    end
+    self.is_flush? && self.values == [10, 11, 12, 13, 14]
   end
 
   def is_flush?
@@ -40,51 +36,27 @@ class Hand < ApplicationRecord
   end
 
   def is_straight?
-    if self.values.uniq.length == 5 && self.values.last - self.values.first == 4
-      return true
-    else
-      return false
-    end
+    self.values.uniq.length == 5 && self.values.last - self.values.first == 4
   end
 
   def is_quads?
-    if self.values_counted.values.include?(4)
-      return true
-    else
-      return false
-    end
+    self.values_counted.values.include?(4)
   end
 
   def is_full_house?
-    if self.includes_trips? && self.includes_pair?
-      return true
-    else
-      return false
-    end
+    self.includes_trips? && self.includes_pair?
   end
 
   def includes_trips?
-    if self.values_counted.values.include?(3)
-      return true
-    else
-      return false
-    end
+    self.values_counted.values.include?(3)
   end
 
   def includes_pair?
-    if self.values_counted.values.include?(2)
-      return true
-    else
-      return false
-    end
+    self.values_counted.values.include?(2)
   end
 
   def is_two_pair?
-    if self.values_counted.values.filter{|count| count == 2}.length == 2
-      return true
-    else
-      return false
-    end
+    self.values_counted.values.filter{|count| count == 2}.length == 2
   end
 
 
