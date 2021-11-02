@@ -36,7 +36,7 @@ class Hand < ApplicationRecord
   end
 
   def is_straight?
-    self.values.uniq.length == 5 && self.values.last - self.values.first == 4
+    (self.values.uniq.length == 5 && self.values.last - self.values.first == 4) || self.values == [2, 3, 4, 5, 14]
   end
 
   def is_quads?
