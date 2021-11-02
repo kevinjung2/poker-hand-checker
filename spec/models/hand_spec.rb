@@ -36,6 +36,12 @@ describe Hand do
       expect(straight.analyze_hand).to eq("Straight")
     end
 
+    it 'recognizes a straight with a low ace' do
+      straight = Hand.create(cards: ["AH", "2D", "3S", "4H", "5H"].map {|card| Card.find_by(name: card)})
+
+      expect(straight.analyze_hand).to eq("Straight")
+    end
+
     it 'recognizes trips' do
       trips = Hand.create(cards: ["AH", "AC", "AS", "JH", "10H"].map {|card| Card.find_by(name: card)})
 
